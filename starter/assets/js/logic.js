@@ -15,6 +15,7 @@ let elQuestions = document.querySelector("#questions");
 let elEndScreen = document.querySelector("#end-screen");
 let elQuestionTitle = document.querySelector("#question-title");
 let elChoices = document.querySelector("#choices");
+let elTimer = document.querySelector("#time");
 
 let elStartButton = document.querySelector("#start");
 
@@ -32,19 +33,34 @@ let questionsIndex = 0;
 
 // function to start timer.
 
+function endScreen() {
+  elQuestions.classList.add("hide");
+  elEndScreen.classList.remove("hide");
+}
+
 function timerDeduct(deduction = 1) {
-  startTime = startTime - deduction;
+  if (startTime > 0) {
+    if (startTime < deduction) {
+      startTime = startTime - startTime;
+    } else {
+      startTime = startTime - deduction;
+    }
+    elTimer.textContent = startTime;
+    return;
+  }
+  endScreen();
 }
 
 function timer() {
-  if (startTime > 0) {
-    timerDeduct();
-    // timerDiv.innerHTML = startTime;
-    console.log(startTime);
+  timerDeduct();
+  if (startTime <= 0) {
+    endScreen();
+    myStopFunction();
     return;
   }
-  myStopFunction();
+  console.log(startTime);
 }
+
 
 function myStopFunction() {
   clearInterval(myInterval);
@@ -79,15 +95,13 @@ function answerHandler(event) {
   if (event.target.nodeName !== "BUTTON") return;
 
   if (event.target.dataset.correct === "true") {
-    console.log("correct");
+    event.target
     if (questionsIndex < questions.length - 1) {
       questionsIndex++;
       generateQuestion();
     } else {
-      elQuestions.classList.add("hide");
-      elEndScreen.classList.remove("hide");
+      endScreen()
     }
-
 
   } else timerDeduct(10);
   console.log(startTime, "clicked");
