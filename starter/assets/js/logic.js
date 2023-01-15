@@ -1,14 +1,25 @@
-let startGame = document.querySelector("#start");
-let getHighScoresButton = document.querySelector(".scores");
-let timerDiv = document.querySelector(".timer");
-let choicesButton = document.querySelector("#choices");
-let endScreen = document.querySelector("#end-screen");
-let submitButton = document.querySelector("#submit");
-let feedback = document.querySelector("#feedback");
-let highScores = document.querySelector("#highscores");
-let clearHighScoresButton = document.querySelector("#clear");
+// let startGame = document.querySelector("#start");
+// let getHighScoresButton = document.querySelector(".scores");
+// let timerDiv = document.querySelector(".timer");
+// let choicesButton = document.querySelector("#choices");
+// let endScreen = document.querySelector("#end-screen");
+// let submitButton = document.querySelector("#submit");
+// let feedback = document.querySelector("#feedback");
+// let highScores = document.querySelector("#highscores");
+// let clearHighScoresButton = document.querySelector("#clear");
 
 let startTime = 3;
+
+let elStartScreen = document.querySelector("#start-screen");
+let elQuestions = document.querySelector("#questions");
+let elEndScreen = document.querySelector("#end-screen");
+let elQuestionTitle = document.querySelector("#question-title");
+let elChoices = document.querySelector("#choices");
+
+let elStartButton = document.querySelector("#start");
+
+let questionsIndex = 0;
+
 
 
 // counter for time count down (75 secs)
@@ -21,19 +32,15 @@ let startTime = 3;
 
 // Div to display correct/wrong answer
 
-// function to start quiz
 
-// function startGame() {}
 
 // function to start timer.
-
-
 
 function timer() {
 
   if (startTime > 0) {
     startTime--;
-    timerDiv.innerHTML = startTime;
+    // timerDiv.innerHTML = startTime;
     console.log(startTime);
     return;
   }
@@ -46,7 +53,31 @@ function myStopFunction() {
 
 const myInterval = setInterval(timer, 1000);
 
+// function to start quiz
 
+function startGame() {
+  // alert("alert box!!");
+// hide start screen
+elStartScreen.classList.add("hide");
+elQuestions.classList.remove("hide");
+generateQuestion();
+
+
+
+}
+
+// Function to generate question:
+
+function generateQuestion() {
+  elQuestionTitle.textContent = questions[questionsIndex].question;
+  const ButtonElement = document.createElement("button");
+  ButtonElement.textContent = questions[questionsIndex].answers[0].text;
+  console.log(ButtonElement);
+}
+
+
+
+elStartButton.addEventListener("click", startGame);
 
 
 
@@ -56,3 +87,5 @@ const myInterval = setInterval(timer, 1000);
 // logic to save answers / highscore in local storage
 
 //
+
+
