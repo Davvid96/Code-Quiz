@@ -70,16 +70,24 @@ generateQuestion();
 
 function generateQuestion() {
   elQuestionTitle.textContent = questions[questionsIndex].question;
-  const ButtonElement = document.createElement("button");
-  ButtonElement.textContent = questions[questionsIndex].answers[0].text;
-  console.log(ButtonElement);
+
+  questions[questionsIndex].answers.forEach(function (answer) {
+    const buttonElement = document.createElement("button");
+    buttonElement.setAttribute("data-correct", answer.correct);
+    buttonElement.textContent = answer.text;
+    elChoices.appendChild(buttonElement);
+
+  });  
+
+
+  console.log(buttonElement);
 }
 
 
 
 elStartButton.addEventListener("click", startGame);
 
-
+elChoices.addEventListener("click", answerHandler);
 
 
 // array to hold answers? - number of right answers?
