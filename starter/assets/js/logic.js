@@ -32,9 +32,13 @@ let questionsIndex = 0;
 
 // function to start timer.
 
+function timerDeduct(deduction = 1) {
+  startTime = startTime - deduction;
+}
+
 function timer() {
   if (startTime > 0) {
-    startTime--;
+    timerDeduct();
     // timerDiv.innerHTML = startTime;
     console.log(startTime);
     return;
@@ -50,10 +54,6 @@ const myInterval = setInterval(timer, 1000);
 
 // function to start quiz
 
-function timerDeduct(deduction = 10) {
-  startTime - deduction;
-}
-
 function startGame() {
   // alert("alert box!!");
   // hide start screen
@@ -66,7 +66,7 @@ function startGame() {
 
 function generateQuestion() {
   elQuestionTitle.textContent = questions[questionsIndex].question;
-
+  elChoices.innerHTML = "";
   questions[questionsIndex].answers.forEach(function (answer) {
     const buttonElement = document.createElement("button");
     buttonElement.setAttribute("data-correct", answer.correct);
@@ -76,14 +76,21 @@ function generateQuestion() {
 }
 
 function answerHandler(event) {
-  if (event.target.nodeName === "BUTTON") {
-    if (event.target.dataset.correct === "true") {
-      console.log("correct");
-      return;
+  if (event.target.nodeName !== "BUTTON") return;
+
+  if (event.target.dataset.correct === "true") {
+    console.log("correct");
+    if (questionsIndex < questions.length - 1) {
+      questionsIndex++;
+      generateQuestion();
+    } else {
+      elQuestions.classList.add("hide");
+      elEndScreen.classList.remove("hide");
     }
-   timerDeduct();
-    console.log(startTime, "clicked");
-  }
+
+
+  } else timerDeduct(10);
+  console.log(startTime, "clicked");
 }
 
 elStartButton.addEventListener("click", startGame);
