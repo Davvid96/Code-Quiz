@@ -25,12 +25,12 @@
     question: "What does HTML stand for?",
     answers: [
       {
-        text: "answer",
-        correct: true 
-      },
-      {
         text: "answer wrong1",
         correct: false 
+      },
+      {
+        text: "answer",
+        correct: true 
       },
       {
         text: "answer wrong2",
