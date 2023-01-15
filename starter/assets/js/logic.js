@@ -1,13 +1,3 @@
-// let startGame = document.querySelector("#start");
-// let getHighScoresButton = document.querySelector(".scores");
-// let timerDiv = document.querySelector(".timer");
-// let choicesButton = document.querySelector("#choices");
-// let endScreen = document.querySelector("#end-screen");
-// let submitButton = document.querySelector("#submit");
-// let feedback = document.querySelector("#feedback");
-// let highScores = document.querySelector("#highscores");
-// let clearHighScoresButton = document.querySelector("#clear");
-
 var startTime = 75;
 
 let elStartScreen = document.querySelector("#start-screen");
@@ -98,8 +88,4 @@ function startGame() {
 
 elStartButton.addEventListener("click", startGame);
 
-// array to hold answers? - number of right answers?
-
-// logic to save answers / highscore in local storage
-
-//
+// Create function to save score and then update highscores page
