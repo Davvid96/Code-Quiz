@@ -8,7 +8,7 @@
 // let highScores = document.querySelector("#highscores");
 // let clearHighScoresButton = document.querySelector("#clear");
 
-let startTime = 3;
+var startTime = 75;
 
 let elStartScreen = document.querySelector("#start-screen");
 let elQuestions = document.querySelector("#questions");
@@ -50,6 +50,10 @@ const myInterval = setInterval(timer, 1000);
 
 // function to start quiz
 
+function timerDeduct(deduction = 10) {
+  startTime - deduction;
+}
+
 function startGame() {
   // alert("alert box!!");
   // hide start screen
@@ -69,15 +73,16 @@ function generateQuestion() {
     buttonElement.textContent = answer.text;
     elChoices.appendChild(buttonElement);
   });
-
-  console.log(buttonElement);
 }
 
 function answerHandler(event) {
   if (event.target.nodeName === "BUTTON") {
     if (event.target.dataset.correct === "true") {
       console.log("correct");
+      return;
     }
+   timerDeduct();
+    console.log(startTime, "clicked");
   }
 }
 
