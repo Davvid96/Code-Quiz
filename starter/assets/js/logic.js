@@ -20,8 +20,6 @@ let elStartButton = document.querySelector("#start");
 
 let questionsIndex = 0;
 
-
-
 // counter for time count down (75 secs)
 
 // link for highscore
@@ -32,12 +30,9 @@ let questionsIndex = 0;
 
 // Div to display correct/wrong answer
 
-
-
 // function to start timer.
 
 function timer() {
-
   if (startTime > 0) {
     startTime--;
     // timerDiv.innerHTML = startTime;
@@ -48,7 +43,7 @@ function timer() {
 }
 
 function myStopFunction() {
-    clearInterval(myInterval);
+  clearInterval(myInterval);
 }
 
 const myInterval = setInterval(timer, 1000);
@@ -57,13 +52,10 @@ const myInterval = setInterval(timer, 1000);
 
 function startGame() {
   // alert("alert box!!");
-// hide start screen
-elStartScreen.classList.add("hide");
-elQuestions.classList.remove("hide");
-generateQuestion();
-
-
-
+  // hide start screen
+  elStartScreen.classList.add("hide");
+  elQuestions.classList.remove("hide");
+  generateQuestion();
 }
 
 // Function to generate question:
@@ -76,24 +68,25 @@ function generateQuestion() {
     buttonElement.setAttribute("data-correct", answer.correct);
     buttonElement.textContent = answer.text;
     elChoices.appendChild(buttonElement);
-
-  });  
-
+  });
 
   console.log(buttonElement);
 }
 
-
+function answerHandler(event) {
+  if (event.target.nodeName === "BUTTON") {
+    if (event.target.dataset.correct === "true") {
+      console.log("correct");
+    }
+  }
+}
 
 elStartButton.addEventListener("click", startGame);
 
 elChoices.addEventListener("click", answerHandler);
-
 
 // array to hold answers? - number of right answers?
 
 // logic to save answers / highscore in local storage
 
 //
-
-
