@@ -61,7 +61,6 @@ function timer() {
   console.log(startTime);
 }
 
-
 function myStopFunction() {
   clearInterval(myInterval);
 }
@@ -95,16 +94,22 @@ function answerHandler(event) {
   if (event.target.nodeName !== "BUTTON") return;
 
   if (event.target.dataset.correct === "true") {
-    event.target
-    if (questionsIndex < questions.length - 1) {
-      questionsIndex++;
-      generateQuestion();
-    } else {
-      endScreen()
-    }
-
-  } else timerDeduct(10);
-  console.log(startTime, "clicked");
+    event.target.style.backgroundColor = "green";
+    setTimeout(function () {
+      if (questionsIndex < questions.length - 1) {
+        questionsIndex++;
+        generateQuestion();
+      } else {
+        endScreen();
+      }
+    }, 200);
+  } else {
+    event.target.style.backgroundColor = "red";
+    setTimeout(function(){
+      event.target.style.backgroundColor = "#563d7c";
+    },400)
+    timerDeduct(10);
+  }
 }
 
 elStartButton.addEventListener("click", startGame);
