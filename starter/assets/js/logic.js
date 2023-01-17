@@ -6,6 +6,8 @@ let elEndScreen = document.querySelector("#end-screen");
 let elQuestionTitle = document.querySelector("#question-title");
 let elChoices = document.querySelector("#choices");
 let elTimer = document.querySelector("#time");
+let elSubmitForm = document.querySelector("#submitForm");
+let elFinalScore = document.querySelector("#final-score");
 
 let elStartButton = document.querySelector("#start");
 
@@ -16,6 +18,7 @@ function startGame() {
     myStopFunction();
     elQuestions.classList.add("hide");
     elEndScreen.classList.remove("hide");
+    elFinalScore.textContent = startTime;
   }
 
   function timerDeduct(deduction = 1) {
@@ -86,6 +89,26 @@ function startGame() {
   generateQuestion();
 }
 
+// function to save score:
+
+function saveScore(event) {
+  event.preventDefault();
+  var scoreName = JSON.parse(localStorage.getItem("highScores"));
+  const newScore = {
+    initial: event.target.elements.scoreInitials.value,
+    score: startTime,
+  };
+  if (!scoreName) {
+    localStorage.setItem("highScores", JSON.stringify([newScore]));
+    return;
+  }
+  localStorage.setItem("highScores", JSON.stringify([...scoreName, newScore]));
+  console.log(event.target.elements.scoreInitials.value);
+  localStorage.setItem("score", "value");
+}
+
 elStartButton.addEventListener("click", startGame);
 
 // Create function to save score and then update highscores page
+
+elSubmitForm.addEventListener("submit", saveScore);

@@ -31,12 +31,14 @@
       </div>
 
       <div id="end-screen" class="hide">
-        <h2>All done!</h2>
-        <p>Your final score is <span id="final-score"></span>.</p>
-        <p>
-          Enter initials: <input type="text" id="initials" max="3" />
-          <button id="submit">Submit</button>
-        </p>
+        <form id="submitForm">
+          <h2>All done!</h2>
+          <p>Your final score is <span id="final-score"></span>.</p>
+          <p>
+            Enter initials: <input type="text" id="initials" name="scoreInitials" minlength="2" required maxlength="10"/>
+            <button id="submit">Submit</button>
+          </p>
+        </form>
       </div>
 
       <div id="feedback" class="feedback hide"></div>
