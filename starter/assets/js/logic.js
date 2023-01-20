@@ -100,21 +100,18 @@ function saveScore(event) {
   };
   if (!scoreName) {
     localStorage.setItem("highScores", JSON.stringify([newScore]));
+    sessionStorage.setItem("highScores", JSON.stringify([newScore]));
     return;
   }
   let sortedScores = [...scoreName, newScore].sort(function (a, b) {
     return b.score - a.score;
   });
- if (sortedScores.length > 5) sortedScores.length = 5;
+  if (sortedScores.length > 5) sortedScores.length = 5;
+  sessionStorage.setItem("highScores", JSON.stringify(sortedScores));
   localStorage.setItem("highScores", JSON.stringify(sortedScores));
   console.log(event.target.elements.scoreInitials.value);
-  localStorage.setItem("score", "value");
 }
 
 elStartButton.addEventListener("click", startGame);
 
-// Create function to save score and then update highscores page
-
 elSubmitForm.addEventListener("submit", saveScore);
-
-// local storage filter + only save high scores?
