@@ -1,43 +1,43 @@
  let questions = [
   {
-    question: "What does JS stand for?",
+    question: "Which is not a JavaScript data type?",
     answers: [
       {
-        text: "answer",
+        text: "double",
         correct: true 
       },
       {
-        text: "answer wrong1",
+        text: "boolean",
         correct: false 
       },
       {
-        text: "answer wrong2",
+        text: "undefined",
         correct: false 
       },
       {
-        text: "answer wrong3",
+        text: "string",
         correct: false 
       }
     ],
   },
 
   {
-    question: "What does HTML stand for?",
+    question: "The # symbol specifies that the selector is?",
     answers: [
       {
-        text: "answer wrong1",
+        text: "class",
         correct: false 
       },
       {
-        text: "answer",
+        text: "id",
         correct: true 
       },
       {
-        text: "answer wrong2",
+        text: "tag",
         correct: false 
       },
       {
-        text: "answer wrong3",
+        text: "first",
         correct: false 
       }
     ],
@@ -45,22 +45,22 @@
   },
 
   {
-    question: "What does CSS stand for?",
+    question: "Commonly used data types DO NOT include:",
     answers: [
       {
-        text: "answer",
+        text: "alerts",
         correct: true 
       },
       {
-        text: "answer wrong1",
+        text: "strings",
         correct: false 
       },
       {
-        text: "answer wrong2",
+        text: "booleans",
         correct: false 
       },
       {
-        text: "answer wrong3",
+        text: "numbers",
         correct: false 
       }
     ],

@@ -3,6 +3,8 @@ const elClear = document.querySelector("#clear");
 
 let playerScores = 0;
 
+// Function to render high scores and retrieve data from local/session storage
+
 function renderScores(scores) {
   scores.forEach((element) => {
     const scoreItem = document.createElement("li");
@@ -23,6 +25,8 @@ function getHighScores() {
     renderScores(localStorageScore);
   }
 }
+
+// function to clear local and session storage
 
 function clearScoresHandler() {
   sessionStorage.removeItem("highScores");

@@ -11,6 +11,8 @@ const elStartButton = document.querySelector("#start");
 let timeCounter = 75;
 let questionsIndex = 0;
 
+// function to start game and render questions, as well as timer functions
+
 function startGame() {
   function renderEndScreen() {
     stopTimer();
